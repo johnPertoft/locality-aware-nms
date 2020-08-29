@@ -33,14 +33,14 @@ pip install artifacts/tf_locality_aware_nms-0.0.1-cp36-cp36m-linux_x86_64.whl
 
 ## Serving
 As far as I know the built shared library file can not be dynamically loaded by Tensorflow Serving.
-Instead Tensorflow Serving has to be built with these ops included in order to load a graph containing them. This can be achieved by the following steps before building Tensorflow Serving.
+Instead Tensorflow Serving has to be built with these ops included in order to load a graph containing them. This can be achieved by the following steps before building Tensorflow Serving (as of version 2.1).
 
 **Include in Tensorflow Serving repository**
 ```
 cp -r lanms $TFSERVING/tensorflow_serving/custom_ops/
 ```
 
-**Update the BUILD file to include these ops (as of version 2.1)**
+**Update the BUILD file to include these ops**
 ```
 sed -i '/SUPPORTED_TENSORFLOW_OPS =/a \ "//tensorflow_serving/custom_ops/lanms:nms_ops",' $TFSERVING/tensorflow_serving/model_servers/BUILD
 ```
