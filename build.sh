@@ -12,8 +12,6 @@ TF_VERSION="$2"
 IMAGE="locality-aware-nms-build"
 WORKDIR="/locality-aware-nms"
 
-BUILD_CMD="./configure.sh ${PYTHON_VERSION} ${TF_VERSION} && bazel build build_pip_pkg && bazel-bin/build_pip_pkg artifacts"
-
 docker build -t ${IMAGE} .
 docker run -it --rm \
     -v $(pwd)/artifacts:"${WORKDIR}/artifacts" \
