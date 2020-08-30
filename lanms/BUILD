@@ -71,11 +71,10 @@ cc_test(
         "cc/kernels/tests_main.cc",
     ],
     deps = [
-        "@com_google_googletest//:gtest",
+        "@googletest//:gtest",
     ],
     copts = [
         "-pthread",
         "-std=c++11",
-        "-D_GLIBCXX_USE_CXX11_ABI=0",
     ],
 )
