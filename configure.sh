@@ -2,8 +2,8 @@
 set -e
 
 if [[ $# -lt 2 ]]; then
-    echo "Usage: $0 <python-version> <tensorflow-version>"
-    exit 1
+  echo "Usage: $0 <python-version> <tensorflow-version>"
+  exit 1
 fi
 
 PYTHON_VERSION="$1"

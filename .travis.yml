@@ -1,6 +1,7 @@
-# TODO: Run c++ tests first.
+# TODO: Running out of log space running all of these. Can we reduce it?
 script:
+  - ./run.sh test
   - ./build.sh 3.6 2.3.0
-  - ./build.sh 3.7 2.3.0
-  - ./build.sh 3.8 2.3.0
+  #- ./build.sh 3.7 2.3.0
+  #- ./build.sh 3.8 2.3.0
 
