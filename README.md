@@ -27,8 +27,8 @@ or how it can be fixed. Thus, in order to install this, it must first be built w
 tensorflow version as you will use it with. These versions can be passed to the build script as follows.
 
 ```
-./build.sh 3.6 2.3.0
-pip install artifacts/tf_locality_aware_nms-0.0.1-cp36-cp36m-linux_x86_64.whl
+./run.sh build 3.7 2.3.0
+pip install artifacts/tf_locality_aware_nms-0.0.1-cp37-cp37m-linux_x86_64.whl
 ```
 
 ## Serving
