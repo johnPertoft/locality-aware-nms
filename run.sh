@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 set -e
-set -x
 
 if [[ $# -lt 1 ]]; then
   echo "Usage: $0 CMD"
@@ -25,12 +24,7 @@ case ${CMD} in
 
     PYTHON_VERSION="$1"
     TF_VERSION="$2"
-
-    # TODO: Fix this and remove build.sh file.
-    exit 1
-
-    #BUILD_CMD="./configure.sh ${PYTHON_VERSION} ${TF_VERSION} && bazel build build_pip_pkg && bazel-bin/build_pip_pkg artifacts"
-    #DOCKER_CMD="bash -c ""\"./configure.sh 3.6 2.3.0 && bazel build build_pip_pkg && bazel-bin/build_pip_pkg artifacts\""
+    DOCKER_CMD="./configure.sh ${PYTHON_VERSION} ${TF_VERSION} && bazel build build_pip_pkg && bazel-bin/build_pip_pkg artifacts"
     ;;
   *)
     echo "Invalid command."
@@ -49,4 +43,5 @@ docker run -it --rm \
   -v $(pwd)/WORKSPACE:"${WORKDIR}/WORKSPACE" \
   -v $(pwd)/configure.sh:"${WORKDIR}/configure.sh" \
   -v $(pwd)/pip_package:"${WORKDIR}/pip_package" \
-  ${IMAGE} ${DOCKER_CMD}
+  --entrypoint "bash" \
+  ${IMAGE} -c "${DOCKER_CMD}"
